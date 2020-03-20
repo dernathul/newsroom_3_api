@@ -1,6 +1,10 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/hunterv/newsroom_3_api/app/controllers/application_controller.rb": [
+        1,
+        null
+      ],
       "/Users/hunterv/newsroom_3_api/app/mailers/application_mailer.rb": [
         0,
         0,
@@ -13,10 +17,6 @@
         0
       ],
       "/Users/hunterv/newsroom_3_api/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/Users/hunterv/newsroom_3_api/app/controllers/application_controller.rb": [
         0,
         0
       ],
@@ -33,6 +33,6 @@
         0
       ]
     },
-    "timestamp": 1584710456
+    "timestamp": 1584713310
   }
 }

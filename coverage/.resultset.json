@@ -1,0 +1,38 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/hunterv/newsroom_3_api/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/hunterv/newsroom_3_api/app/models/application_record.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/hunterv/newsroom_3_api/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/hunterv/newsroom_3_api/app/controllers/application_controller.rb": [
+        0,
+        0
+      ],
+      "/Users/hunterv/newsroom_3_api/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/hunterv/newsroom_3_api/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1584699897
+  }
+}

@@ -18,8 +18,8 @@
       "/Users/hunterv/newsroom_3_api/app/controllers/api/v1/articles_controller.rb": [
         1,
         1,
-        1,
-        1,
+        2,
+        2,
         null,
         null
       ],
@@ -46,6 +46,6 @@
         0
       ]
     },
-    "timestamp": 1584785671
+    "timestamp": 1584786225
   }
 }

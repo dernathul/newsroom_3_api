@@ -1,6 +1,6 @@
 describe 'GET /articles', type: :request do
   describe'successfull' do
-    let!(:articles) {create(:article, title: 'SPACE')}
+    let!(:articles) {create(:article)}
     let!(:articles2) {create(:article, title: 'NOSPACE', snippet: "You thought you liked space", content: "NOSPACE is where you want to be")}
     before do
       get '/api/v1/articles'
@@ -12,7 +12,6 @@ describe 'GET /articles', type: :request do
     it 'returns correct number of articles' do
       binding.pry
       expect(JSON.parse(response.body)["articles"].count).to eq 2
-      
     end
 
     it 'checks if title is correct' do

@@ -20,9 +20,7 @@
         1,
         1,
         1,
-        1,
         null,
-        1,
         null
       ],
       "/Users/hunterv/newsroom_3_api/app/mailers/application_mailer.rb": [
@@ -48,6 +46,6 @@
         0
       ]
     },
-    "timestamp": 1584785400
+    "timestamp": 1584785671
   }
 }

@@ -5,8 +5,20 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    article = Article.new
-    render json: { article: article }, status: 200
+    binding.pry
+    @article = Article.new(article_params)
+    if (@article == "")
+      render json: {error: 'Title cant be blank!'}, status: 400
+
+    
+    else
+      render json: { article: @article }, status: 200
+    end
+  end
+
+  private
+  def article_params
+    params.require(:article).permit(:title, :snippet, :content)
   end
 
 end

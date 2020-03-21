@@ -21,5 +21,17 @@ describe 'POST /article', type: :request do
       expect(@article.content).to eq "Govenor says this aint good"
     end
   end
+
+  describe 'unsuccessfull' do
+    before do
+      post '/api/v1/articles'
+      @article = Article.new(title: "", snippet: "", content: "")
+    end
+
+    it 'displays error on empty title' do
+      binding.pry
+      expect(response.status).to eq 400
+    end
+  end
   
 end

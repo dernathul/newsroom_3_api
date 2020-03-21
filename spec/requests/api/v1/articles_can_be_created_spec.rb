@@ -9,9 +9,16 @@ describe 'POST /article', type: :request do
       expect(response.status).to eq 200
     end
 
-    it 'title is not blank' do
-      binding.pry
+    it 'displays correct title' do
       expect(@article.title).to eq "No more room in space"
+    end
+
+    it 'displays correct snippet' do
+      expect(@article.snippet).to eq "Its all gone, sorry"
+    end
+
+    it 'displays correct content' do
+      expect(@article.content).to eq "Govenor says this aint good"
     end
   end
   

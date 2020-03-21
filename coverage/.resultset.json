@@ -1,10 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/craftacademy/newsroom_3_api/app/controllers/application_controller.rb": [
-        1,
-        null
-      ],
       "/Users/craftacademy/newsroom_3_api/app/mailers/application_mailer.rb": [
         0,
         0,
@@ -20,9 +16,17 @@
         0,
         0
       ],
-      "/Users/craftacademy/newsroom_3_api/app/controllers/api/v1/article_index_controller.rb": [
+      "/Users/craftacademy/newsroom_3_api/app/controllers/application_controller.rb": [
+        0,
+        0
+      ],
+      "/Users/craftacademy/newsroom_3_api/app/controllers/api/v1/articles_controller.rb": [
+        0,
+        0,
+        0,
         0,
         null,
+        0,
         0
       ],
       "/Users/craftacademy/newsroom_3_api/app/channels/application_cable/connection.rb": [
@@ -38,6 +42,6 @@
         0
       ]
     },
-    "timestamp": 1584720342
+    "timestamp": 1584783903
   }
 }

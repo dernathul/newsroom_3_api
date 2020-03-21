@@ -7,13 +7,5 @@ describe 'GET /articles', type: :request do
     it 'returns 200 status' do
       expect(response.status).to eq 200
     end
-  
-  
-  
-  
   end
-
-
-
-
 end

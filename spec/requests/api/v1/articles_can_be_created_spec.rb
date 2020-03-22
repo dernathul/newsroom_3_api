@@ -1,8 +1,13 @@
 describe 'POST /article', type: :request do
   describe 'successfull' do
     before do
+      binding.pry 
       post '/api/v1/articles'
-      @article = Article.new(title: "No more room in space", snippet: "Its all gone, sorry", content: "Govenor says this aint good")
+      @article = Article.new(
+        title: "No more room in space",
+        snippet: "Its all gone, sorry",
+        content: "Govenor says this aint good"
+      )
     end
 
     it 'returns 200 status' do
@@ -16,7 +21,6 @@ describe 'POST /article', type: :request do
     it 'displays correct snippet' do
       expect(@article.snippet).to eq "Its all gone, sorry"
     end
-
     it 'displays correct content' do
       expect(@article.content).to eq "Govenor says this aint good"
     end
@@ -25,13 +29,17 @@ describe 'POST /article', type: :request do
   describe 'unsuccessfull' do
     before do
       post '/api/v1/articles'
-      @article = Article.new(title: "", snippet: "", content: "")
+      @article = Article.new(
+        title: "",
+        snippet: "",
+        content: ""
+      )
     end
 
     it 'displays error on empty title' do
-      binding.pry
       expect(response.status).to eq 400
     end
+    binding.pry
   end
   
 end

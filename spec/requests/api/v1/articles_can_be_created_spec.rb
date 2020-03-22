@@ -25,7 +25,7 @@ RSpec.describe 'POST /article', type: :request do
     end
   end
 
-  describe 'ungood' do
+  describe 'sad path' do
     before do
       post '/api/v1/articles',
       params: {

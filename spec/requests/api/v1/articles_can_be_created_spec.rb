@@ -14,15 +14,14 @@ RSpec.describe 'POST /article', type: :request do
     end
 
     it 'displays correct title' do
-      binding.pry
-      expect(article.title).to render_template(:title)
+      expect(response.request.params['title']).to eq "No more room in space"
     end
 
     it 'displays correct snippet' do
-      expect(@filtered_parameters).to eq "Its all gone, sorry"
+      expect(response.request.params['snippet']).to eq "Its all gone, sorry"
     end
     it 'displays correct content' do
-      expect(params.content).to eq "Govenor says this aint good"
+      expect(response.request.params['content']).to eq "Govenor says this aint good"
     end
   end
 

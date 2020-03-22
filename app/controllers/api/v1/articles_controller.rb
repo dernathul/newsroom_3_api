@@ -6,17 +6,17 @@ class Api::V1::ArticlesController < ApplicationController
 
   def create
 
-    # if @article.persisted?
-    #   binding.pry
-    #   render json: { message: 'Very done!' }
-    # else
-    #   binding.pry
-    # end
-
     article = Article.create(article_params)
     if params[:title] == ""
       render json: {message: 'Im gonna stop you right there'}, status: 400
     end
+
+    if article.persisted?
+      render json: { message: 'Very done!' }
+    else
+      "NO"
+    end
+
   end
 
 

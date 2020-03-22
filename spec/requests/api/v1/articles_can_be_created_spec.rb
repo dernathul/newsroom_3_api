@@ -1,13 +1,12 @@
-describe 'POST /article', type: :request do
+RSpec.describe 'POST /article', type: :request do
   describe 'successfull' do
     before do
-      binding.pry 
-      post '/api/v1/articles'
-      @article = Article.new(
+      post '/api/v1/articles',
+      params: {
         title: "No more room in space",
         snippet: "Its all gone, sorry",
         content: "Govenor says this aint good"
-      )
+      }
     end
 
     it 'returns 200 status' do
@@ -26,20 +25,19 @@ describe 'POST /article', type: :request do
     end
   end
 
-  describe 'unsuccessfull' do
+  describe 'ungood' do
     before do
-      post '/api/v1/articles'
-      @article = Article.new(
+      post '/api/v1/articles',
+      params: {
         title: "",
         snippet: "",
         content: ""
-      )
+      }
     end
 
     it 'displays error on empty title' do
       expect(response.status).to eq 400
     end
-    binding.pry
   end
   
 end

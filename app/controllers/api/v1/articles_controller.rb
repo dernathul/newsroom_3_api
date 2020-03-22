@@ -5,10 +5,20 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    binding.pry
-    article = Article.create(article_params)
 
+    # if @article.persisted?
+    #   binding.pry
+    #   render json: { message: 'Very done!' }
+    # else
+    #   binding.pry
+    # end
+
+    article = Article.create(article_params)
+    if params[:title] == ""
+      render json: {message: 'Im gonna stop you right there'}, status: 400
+    end
   end
+
 
   private
   

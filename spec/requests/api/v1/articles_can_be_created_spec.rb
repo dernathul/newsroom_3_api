@@ -37,6 +37,15 @@ RSpec.describe 'POST /article', type: :request do
 
     it 'displays error on empty title' do
       expect(response.status).to eq 400
+      expect(response.body).to include('Im gonna stop you right there, you need to enter a title')
+    end
+
+    it 'displays error on empty snippet' do
+      expect(response.status).to eq 400
+    end
+
+    it 'displays error on empty content' do
+      expect(response.status).to eq 400
     end
   end
   

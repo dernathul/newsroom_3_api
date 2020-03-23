@@ -35,11 +35,14 @@ RSpec.describe 'POST /article', type: :request do
       }
     end
 
-    it 'displays error on empty title' do
+    it 'displays error of incomplete article' do
       expect(response.status).to eq 206
-      expect(response.body).to include("Your article could not be saved")
     end
     
+    it 'displays error message on empty title' do
+      expect(response.body).to include("Your article could not be saved")
+    end
+
     before do
       post '/api/v1/articles',
       params: {
@@ -49,8 +52,12 @@ RSpec.describe 'POST /article', type: :request do
       }
     end
 
-    it 'displays error on empty snippet' do
+    it 'displays error of incomplete article' do
       expect(response.status).to eq 206
+    end
+    
+    it 'displays error message on empty snippet' do
+      expect(response.body).to include("Your article could not be saved")
     end
 
     before do
@@ -62,10 +69,13 @@ RSpec.describe 'POST /article', type: :request do
       }
     end
 
-    it 'displays error on empty content' do
+    it 'displays error of incomplete article' do
       expect(response.status).to eq 206
     end
-  
+    
+    it 'displays error message on empty content' do
+      expect(response.body).to include("Your article could not be saved")
+    end
   end
 end
   

@@ -5,13 +5,12 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-
     article = Article.create(article_params)
     
-    if article.persisted?
-      render json: { message: 'Your article was saved' }, status: 200
+    if article.persisted? 
+      render json: { message: 'Your article was saved' }
     else 
-      render json: { message: 'Your article could not be saved'}, status: 206
+      render json: { message: article.errors.full_messages.to_sentence}, status: 422
     end
   end
 

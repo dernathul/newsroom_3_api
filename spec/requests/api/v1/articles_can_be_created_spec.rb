@@ -36,11 +36,11 @@ RSpec.describe 'POST /article', type: :request do
     end
 
     it 'displays error of incomplete article' do
-      expect(response.status).to eq 206
+      expect(response.status).to eq 422
     end
     
     it 'displays error message on empty title' do
-      expect(response.body).to include("Your article could not be saved")
+      expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
     end
 
     before do
@@ -53,11 +53,11 @@ RSpec.describe 'POST /article', type: :request do
     end
 
     it 'displays error of incomplete article' do
-      expect(response.status).to eq 206
+      expect(response.status).to eq 422
     end
     
     it 'displays error message on empty snippet' do
-      expect(response.body).to include("Your article could not be saved")
+      expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
     end
 
     before do
@@ -70,11 +70,11 @@ RSpec.describe 'POST /article', type: :request do
     end
 
     it 'displays error of incomplete article' do
-      expect(response.status).to eq 206
+      expect(response.status).to eq 422
     end
     
     it 'displays error message on empty content' do
-      expect(response.body).to include("Your article could not be saved")
+      expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
     end
   end
 end

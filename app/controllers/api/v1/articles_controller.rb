@@ -13,15 +13,11 @@ class Api::V1::ArticlesController < ApplicationController
     else 
       render json: { message: 'Your article could not be saved'}, status: 206
     end
-
- 
   end
-
 
   private
   
   def article_params
     params.permit(:title, :snippet, :content)
   end
-
 end

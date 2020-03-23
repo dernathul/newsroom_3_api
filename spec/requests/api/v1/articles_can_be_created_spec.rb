@@ -30,23 +30,42 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
       params: {
         title: "",
-        snippet: "",
-        content: ""
+        snippet: "this is text",
+        content: "content text"
       }
     end
 
     it 'displays error on empty title' do
-      expect(response.status).to eq 400
-      expect(response.body).to include('Im gonna stop you right there, you need to enter a title')
+      expect(response.status).to eq 206
+      expect(response.body).to include("Your article could not be saved")
+    end
+    
+    before do
+      post '/api/v1/articles',
+      params: {
+        title: "Cool title",
+        snippet: "",
+        content: "content text"
+      }
     end
 
     it 'displays error on empty snippet' do
-      expect(response.status).to eq 400
+      expect(response.status).to eq 206
+    end
+
+    before do
+      post '/api/v1/articles',
+      params: {
+        title: "Yes a title",
+        snippet: "this is text",
+        content: ""
+      }
     end
 
     it 'displays error on empty content' do
-      expect(response.status).to eq 400
+      expect(response.status).to eq 206
     end
-  end
   
+  end
 end
+  

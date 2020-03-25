@@ -32,7 +32,7 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
         params: {
           article: {
-          title: "",
+          title: '',
           snippet: "this is text",
           content: "content text"
           }
@@ -44,9 +44,10 @@ RSpec.describe 'POST /article', type: :request do
     end
     
     it 'displays error message on empty title' do
-      expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
+      expect(JSON.parse(response.body)['message']).to eq "Title can't be blank"
     end
-
+  end
+  describe 'sad path' do
     before do
       post '/api/v1/articles',
       params: { 
@@ -63,9 +64,11 @@ RSpec.describe 'POST /article', type: :request do
     end
     
     it 'displays error message on empty snippet' do
-      expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
+      expect(JSON.parse(response.body)['message']).to eq "Snippet can't be blank"
     end
+  end
 
+  describe 'sad path' do
     before do
       post '/api/v1/articles',
       params: { 

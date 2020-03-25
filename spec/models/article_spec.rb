@@ -8,7 +8,7 @@ RSpec.describe Article, type: :model do
   
   describe 'Validations' do
     it { is_expected.to validate_presence_of :title }
-    it { is_expected.to have_db_column :snippet }
+    it { is_expected.to validate_presence_of :snippet }
     it { is_expected.to validate_presence_of :content}
   end
   

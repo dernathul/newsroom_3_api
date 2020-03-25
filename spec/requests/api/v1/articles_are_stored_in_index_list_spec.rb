@@ -23,9 +23,5 @@ describe 'GET /articles', type: :request do
     it 'checks if snippet is correct' do
       expect(JSON.parse(response.body)["articles"].first["snippet"]).to eq "Is space the next place?"
     end
-
-    it 'checks if content is correct' do
-      expect(JSON.parse(response.body)["articles"].first["content"]).to eq "Lau has become the president of space."
-    end
   end
 end

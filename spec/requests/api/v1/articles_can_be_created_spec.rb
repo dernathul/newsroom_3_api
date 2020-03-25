@@ -28,11 +28,14 @@ RSpec.describe 'POST /article', type: :request do
   describe 'sad path' do
     before do
       post '/api/v1/articles',
-      params: {
+      
+        params: {
+        article: {
         title: "",
         snippet: "this is text",
         content: "content text"
-      }
+        }
+        }
     end
 
     it 'displays error of incomplete article' do
@@ -40,7 +43,8 @@ RSpec.describe 'POST /article', type: :request do
     end
     
     it 'displays error message on empty title' do
-      expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
+      binding.pry
+      expect(JSON.parse(response.body)['error']).to eq "Content can't be blank"
     end
 
     before do

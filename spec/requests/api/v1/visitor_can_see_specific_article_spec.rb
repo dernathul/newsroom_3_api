@@ -10,7 +10,15 @@ RSpec.describe Api::V1::ArticlesController, type: :request do
     end
 
     it 'should return article title' do
-      expect(response_json)['article']['title'].to eq 'NOSPACE'
+      expect(response_json['title']).to eq 'NOSPACE'
+    end
+
+    it 'should return article snippet' do
+      expect(response_json['snippet']).to eq 'You thought you liked space'
+    end
+
+    it 'should return article content' do
+      expect(response_json['content']).to eq 'NOSPACE is where you want to be'
     end
   end
 end

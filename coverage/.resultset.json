@@ -1,51 +1,55 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hunterv/newsroom_3_api/app/models/article.rb": [
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/controllers/api/v1/articles_controller.rb": [
         1,
         1,
-        null
-      ],
-      "/Users/hunterv/newsroom_3_api/app/models/application_record.rb": [
+        0,
+        0,
+        null,
+        null,
         1,
-        1,
-        null
-      ],
-      "/Users/hunterv/newsroom_3_api/app/controllers/application_controller.rb": [
-        1,
-        null
-      ],
-      "/Users/hunterv/newsroom_3_api/app/controllers/api/v1/articles_controller.rb": [
-        1,
-        1,
-        5,
-        5,
+        2,
         null,
         null
       ],
-      "/Users/hunterv/newsroom_3_api/app/mailers/application_mailer.rb": [
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/controllers/application_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/models/article.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/hunterv/newsroom_3_api/app/jobs/application_job.rb": [
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/jobs/application_job.rb": [
         0,
         0
       ],
-      "/Users/hunterv/newsroom_3_api/app/channels/application_cable/connection.rb": [
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/hunterv/newsroom_3_api/app/channels/application_cable/channel.rb": [
+      "/Users/emma-mariathalen/craftAcademy/newsroom_3/newsroom_3_api/app/channels/application_cable/channel.rb": [
         0,
         0,
         0,
         0
       ]
     },
-    "timestamp": 1584795549
+    "timestamp": 1585143795
   }
 }

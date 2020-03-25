@@ -13,7 +13,6 @@ describe 'GET /articles', type: :request do
     end
     
     it 'returns correct number of articles' do
-      binding.pry
       expect(JSON.parse(response.body)["articles"].count).to eq 2
     end
 

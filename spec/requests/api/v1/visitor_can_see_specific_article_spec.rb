@@ -10,7 +10,6 @@ RSpec.describe Api::V1::ArticlesController, type: :request do
     end
 
     it 'should return article title' do
-      binding.pry
       expect(response_json['article']['title']).to eq 'NOSPACE'
     end
 

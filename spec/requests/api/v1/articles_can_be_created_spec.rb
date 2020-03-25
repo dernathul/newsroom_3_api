@@ -3,9 +3,11 @@ RSpec.describe 'POST /article', type: :request do
     before do
       post '/api/v1/articles',
       params: {
-        title: "No more room in space",
-        snippet: "Its all gone, sorry",
-        content: "Govenor says this aint good"
+        article: {
+          title: "No more room in space",
+          snippet: "Its all gone, sorry",
+          content: "Govenor says this aint good"
+        }
       }
     end
 
@@ -14,27 +16,26 @@ RSpec.describe 'POST /article', type: :request do
     end
 
     it 'displays correct title' do
-      expect(response.request.params['title']).to eq "No more room in space"
+      expect(response.request.params['article']['title']).to eq "No more room in space"
     end
 
     it 'displays correct snippet' do
-      expect(response.request.params['snippet']).to eq "Its all gone, sorry"
+      expect(response.request.params['article']['snippet']).to eq "Its all gone, sorry"
     end
     it 'displays correct content' do
-      expect(response.request.params['content']).to eq "Govenor says this aint good"
+      expect(response.request.params['article']['content']).to eq "Govenor says this aint good"
     end
   end
 
   describe 'sad path' do
     before do
       post '/api/v1/articles',
-      
         params: {
-        article: {
-        title: "",
-        snippet: "this is text",
-        content: "content text"
-        }
+          article: {
+          title: "",
+          snippet: "this is text",
+          content: "content text"
+          }
         }
     end
 
@@ -43,16 +44,17 @@ RSpec.describe 'POST /article', type: :request do
     end
     
     it 'displays error message on empty title' do
-      binding.pry
-      expect(JSON.parse(response.body)['error']).to eq "Content can't be blank"
+      expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
     end
 
     before do
       post '/api/v1/articles',
-      params: {
-        title: "Cool title",
-        snippet: "",
-        content: "content text"
+      params: { 
+        article: {
+          title: "Cool title",
+          snippet: "",
+          content: "content text"
+        }
       }
     end
 
@@ -66,10 +68,12 @@ RSpec.describe 'POST /article', type: :request do
 
     before do
       post '/api/v1/articles',
-      params: {
-        title: "Yes a title",
-        snippet: "this is text",
-        content: ""
+      params: { 
+        article: {
+          title: "Yes a title",
+          snippet: "this is text",
+          content: ""
+        }
       }
     end
 

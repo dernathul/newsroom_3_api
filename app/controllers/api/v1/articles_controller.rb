@@ -7,11 +7,10 @@ class Api::V1::ArticlesController < ApplicationController
 
   def create
     article = Article.create(article_params)
-    binding.pry
     if article.persisted? 
       render json: { message: 'Your article was saved' }
     else 
-      render json: { error: article.errors.full_messages.to_sentence}, status: 422
+      render json: { message: article.errors.full_messages.to_sentence}, status: 422
     end
   end
 

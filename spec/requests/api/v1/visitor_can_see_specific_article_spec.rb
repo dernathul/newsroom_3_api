@@ -20,5 +20,9 @@ RSpec.describe Api::V1::ArticlesController, type: :request do
     it 'should return article content' do
       expect(response_json['article']['content']).to eq 'NOSPACE is where you want to be'
     end
+
+    it 'should return article category' do
+      expect(reponse_json['article']['category']).to eq 'tech'
+    end 
   end
 end

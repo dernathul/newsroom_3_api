@@ -4,10 +4,10 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
       params: {
         article: {
-          title: "No more room in space",
-          snippet: "Its all gone, sorry",
-          content: "Govenor says this aint good",
-          category: "tech"
+          title: 'No more room in space',
+          snippet: 'Its all gone, sorry',
+          content: 'Govenor says this aint good',
+          category: 'tech'
         }
       }
     end
@@ -17,19 +17,19 @@ RSpec.describe 'POST /article', type: :request do
     end
 
     it 'displays correct title' do
-      expect(response.request.params['article']['title']).to eq "No more room in space"
+      expect(response.request.params['article']['title']).to eq 'No more room in space'
     end
 
     it 'displays correct snippet' do
-      expect(response.request.params['article']['snippet']).to eq "Its all gone, sorry"
+      expect(response.request.params['article']['snippet']).to eq 'Its all gone, sorry'
     end
 
     it 'displays correct content' do
-      expect(response.request.params['article']['content']).to eq "Govenor says this aint good"
+      expect(response.request.params['article']['content']).to eq 'Govenor says this aint good'
     end
 
     it 'displays correct category' do
-      expect(response.request.params['article']['category']).to eq "tech"
+      expect(response.request.params['article']['category']).to eq 'tech'
     end
 
   end
@@ -40,9 +40,9 @@ RSpec.describe 'POST /article', type: :request do
         params: {
           article: {
           title: '',
-          snippet: "this is text",
-          content: "content text",
-          category: "tech"
+          snippet: 'this is text',
+          content: 'content text',
+          category: 'tech'
           }
         }
     end
@@ -60,10 +60,10 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
       params: { 
         article: {
-          title: "Cool title",
-          snippet: "",
-          content: "content text",
-          category: "tech"
+          title: 'Cool title',
+          snippet: '',
+          content: 'content text',
+          category: 'tech'
         }
       }
     end
@@ -82,10 +82,10 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
       params: { 
         article: {
-          title: "Yes a title",
-          snippet: "this is text",
-          content: "",
-          category: "tech"
+          title: 'Yes a title',
+          snippet: 'this is text',
+          content: '',
+          category: 'tech'
         }
       }
     end
@@ -99,16 +99,15 @@ RSpec.describe 'POST /article', type: :request do
     end
   end
 
-
   describe 'sad path' do
     before do
       post '/api/v1/articles',
       params: { 
         article: {
-          title: "Yes a title",
-          snippet: "this is text",
-          content: "content text",
-          category: ""
+          title: 'Yes a title',
+          snippet: 'this is text',
+          content: 'content text',
+          category: ''
         }
       }
     end

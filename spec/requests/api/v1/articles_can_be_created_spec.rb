@@ -4,9 +4,10 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
       params: {
         article: {
-          title: "No more room in space",
-          snippet: "Its all gone, sorry",
-          content: "Govenor says this aint good"
+          title: 'No more room in space',
+          snippet: 'Its all gone, sorry',
+          content: 'Govenor says this aint good',
+          category: 'tech'
         }
       }
     end
@@ -16,15 +17,21 @@ RSpec.describe 'POST /article', type: :request do
     end
 
     it 'displays correct title' do
-      expect(response.request.params['article']['title']).to eq "No more room in space"
+      expect(response.request.params['article']['title']).to eq 'No more room in space'
     end
 
     it 'displays correct snippet' do
-      expect(response.request.params['article']['snippet']).to eq "Its all gone, sorry"
+      expect(response.request.params['article']['snippet']).to eq 'Its all gone, sorry'
     end
+
     it 'displays correct content' do
-      expect(response.request.params['article']['content']).to eq "Govenor says this aint good"
+      expect(response.request.params['article']['content']).to eq 'Govenor says this aint good'
     end
+
+    it 'displays correct category' do
+      expect(response.request.params['article']['category']).to eq 'tech'
+    end
+
   end
 
   describe 'sad path' do
@@ -33,8 +40,9 @@ RSpec.describe 'POST /article', type: :request do
         params: {
           article: {
           title: '',
-          snippet: "this is text",
-          content: "content text"
+          snippet: 'this is text',
+          content: 'content text',
+          category: 'tech'
           }
         }
     end
@@ -52,9 +60,10 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
       params: { 
         article: {
-          title: "Cool title",
-          snippet: "",
-          content: "content text"
+          title: 'Cool title',
+          snippet: '',
+          content: 'content text',
+          category: 'tech'
         }
       }
     end
@@ -73,9 +82,10 @@ RSpec.describe 'POST /article', type: :request do
       post '/api/v1/articles',
       params: { 
         article: {
-          title: "Yes a title",
-          snippet: "this is text",
-          content: ""
+          title: 'Yes a title',
+          snippet: 'this is text',
+          content: '',
+          category: 'tech'
         }
       }
     end
@@ -86,6 +96,28 @@ RSpec.describe 'POST /article', type: :request do
     
     it 'displays error message on empty content' do
       expect(JSON.parse(response.body)['message']).to eq "Content can't be blank"
+    end
+  end
+
+  describe 'sad path' do
+    before do
+      post '/api/v1/articles',
+      params: { 
+        article: {
+          title: 'Yes a title',
+          snippet: 'this is text',
+          content: 'content text',
+          category: ''
+        }
+      }
+    end
+
+    it 'displays error of incomplete article' do
+      expect(response.status).to eq 422
+    end
+    
+    it 'displays error message on empty category' do
+      expect(JSON.parse(response.body)['message']).to eq "Category can't be blank"
     end
   end
 end

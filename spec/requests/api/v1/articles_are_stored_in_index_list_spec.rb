@@ -2,7 +2,7 @@ describe 'GET /articles', type: :request do
   describe'successfull' do
     
     let!(:articles) {create(:article)}
-    let!(:articles2) {create(:article, title: 'NOSPACE', snippet: "You thought you liked space", content: "NOSPACE is where you want to be")}
+    let!(:articles2) {create(:article, title: 'NOSPACE', snippet: "You thought you liked space", content: "NOSPACE is where you want to be", category: "tech")}
     
     before do
       get '/api/v1/articles'

@@ -22,7 +22,7 @@ RSpec.describe Api::V1::ArticlesController, type: :request do
     end
 
     it 'should return article category' do
-      expect(reponse_json['article']['category']).to eq 'tech'
+      expect(response_json['article']['category']).to eq 'tech'
     end 
   end
 end

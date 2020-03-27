@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_03_27_082929) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.text "snippet"
     t.text "content"
+    t.text "snippet"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category"

@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
   include DeviseTokenAuth::Concerns::User
-  enum role: %i[user journalist]
+  enum role: [:user, :journalist]
 end

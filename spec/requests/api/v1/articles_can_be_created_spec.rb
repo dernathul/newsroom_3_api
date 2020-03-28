@@ -1,4 +1,8 @@
 RSpec.describe "POST /article", type: :request do
+  let(:journalist) { create(:user, role: "journalist") }
+  let(:journalist_credentials) { journalist.create_new_auth_token }
+  let(:journalist_headers) { { HTTP_ACCEPT: "application/json" }.merge!(journalist_credentials) }
+
   describe "successfull" do
     before do
       post "/api/v1/articles",
@@ -9,7 +13,8 @@ RSpec.describe "POST /article", type: :request do
                content: "Govenor says this aint good",
                category: "tech",
              },
-           }
+           },
+           headers: journalist_headers
     end
 
     it "returns 200 status" do
@@ -43,7 +48,8 @@ RSpec.describe "POST /article", type: :request do
             content: "content text",
             category: "tech",
           },
-        }
+        },
+        headers: journalist_headers
     end
 
     it "displays error of incomplete article" do
@@ -64,7 +70,8 @@ RSpec.describe "POST /article", type: :request do
                content: "content text",
                category: "tech",
              },
-           }
+           },
+           headers: journalist_headers
     end
 
     it "displays error of incomplete article" do
@@ -86,7 +93,8 @@ RSpec.describe "POST /article", type: :request do
                content: "",
                category: "tech",
              },
-           }
+           },
+           headers: journalist_headers
     end
 
     it "displays error of incomplete article" do
@@ -108,7 +116,8 @@ RSpec.describe "POST /article", type: :request do
                content: "content text",
                category: "",
              },
-           }
+           },
+           headers: journalist_headers
     end
 
     it "displays error of incomplete article" do

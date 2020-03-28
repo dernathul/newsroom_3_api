@@ -31,6 +31,9 @@ RSpec.describe User, type: :model do
       it "should have valid Factory" do
         expect(FactoryBot.create(:user)).to be_valid
       end
+      it "should have valid Factary" do
+        expect(FactoryBot.create(:journalist)).to be_valid
+      end
     end
   end
 end

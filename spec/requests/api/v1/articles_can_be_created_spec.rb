@@ -142,4 +142,27 @@ RSpec.describe 'POST /article', type: :request do
       ).to eq "Category can't be blank"
     end
   end
+
+  describe 'can not create article as user' do
+    before do
+      post '/api/v1/articles',
+           params: {
+             article: {
+               title: 'No more room in space',
+               snippet: 'Its all gone, sorry',
+               content: 'Govenor says this aint good',
+               category: 'tech'
+             }
+           },
+           headers: headers
+    end
+
+    it 'returns 401 status' do
+      expect(response.status).to eq 401
+    end
+
+  it 'returns stuff' do
+    expect(response_json["errors"][0]).to eq "You need to sign in or sign up before continuing."
+  end
+  end
 end

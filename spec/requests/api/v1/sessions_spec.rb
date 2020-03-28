@@ -23,6 +23,7 @@ RSpec.describe "POST /api/v1/auth/sign_in", type: :request do
     end
 
     it "returns expected response" do
+      binding.pry
       expect(response_json).to eq expected_response
     end
   end

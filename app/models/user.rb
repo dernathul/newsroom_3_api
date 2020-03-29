@@ -2,12 +2,9 @@
 
 class User < ActiveRecord::Base
   extend Devise::Models
-  devise :database_authenticatable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :trackable,
-         :validatable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
-  enum role: [:user, :journalist]
+  validates_presence_of :role
+  enum role: [ :registred_user, :journalist ]
 end

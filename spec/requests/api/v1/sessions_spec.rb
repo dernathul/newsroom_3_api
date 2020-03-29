@@ -1,6 +1,6 @@
 RSpec.describe 'POST /api/v1/auth/sign_in', type: :request do
   let(:headers) { { HTTP_ACCEPT: 'application/json' } }
-  let(:user)  { create(:user, role: 'user') } 
+  let(:user)  { create(:user, role: 'registred_user') } 
   let(:expected_response) do
     {
       'data' => {
@@ -9,7 +9,7 @@ RSpec.describe 'POST /api/v1/auth/sign_in', type: :request do
         'email' => user.email,
         'provider' => 'email',
         'allow_password_change' => false,
-        'role' => 'user'
+        'role' => 'registred_user'
       }
     }
   end

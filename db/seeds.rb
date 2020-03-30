@@ -7,5 +7,5 @@ Article.create title: 'Attending a bootcamp can be very hard but is very fun', s
 Article.create title: 'Oil companies are underrestimated', snippet: 'They are not that bad actually, even though they are killing baby seals', content: "It's our top priority to brand transparent e-social-media! By putting frictionless e-networks in dynamic deliverables, we can enhance e-business and deploy exchanges at the same time. Besides, who else can empower enterprise methodologies in a way that is as next-generation? We do this with intuitive e-services.", category: 'politics', premium: false
 Article.create title: 'Sci-Fi is the new Rom-Com', snippet: 'Scientists say that in the future women will enjoy Sci-Fi more than Rom-Coms', content: "We know you want to target distributed functionalities! This enables you to seize frictionless e-services. Plus, you can morph next-generation content. It's our cross-platform e-exchanges that let you drive systems in a way that is completely efficient.", category: 'culture', premium: true
 
-User.create email: 'journalist@mail.com', password: 'password', password_confirmation: 'password', role: 'journalist'
-User.create email: 'user@mail.com', password: 'password', password_confirmation: 'password', role: 'registred_user'
+User.create email: 'journalist@mail.com', password: 'password', role: 'journalist'
+User.create email: 'user@mail.com', password: 'password', role: 'registred_user'

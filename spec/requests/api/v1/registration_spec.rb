@@ -63,7 +63,7 @@ RSpec.describe "POST '/api/v1/auth'", type: :request do
     end
 
     describe 'an already registered email' do
-      let!(:registered_user) { create(:user, email: 'first.user@mail.com') }
+      let!(:reg_user) { create(:user, email: 'first.user@mail.com') }
 
       before do
         post '/api/v1/auth',

@@ -3,7 +3,7 @@ FactoryBot.define do
     email { "user#{rand(1...9999)}@mail.com" }
     password { 'password' }
     password_confirmation { 'password' }
-    role { 'registred_user' }
+    role { 'reg_user' }
     factory :journalist do
       role { 'journalist' }
     end

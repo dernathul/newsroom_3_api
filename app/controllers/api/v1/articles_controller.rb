@@ -20,8 +20,9 @@ class Api::V1::ArticlesController < ApplicationController
         render json: { message: article.errors.full_messages.to_sentence },
                status: 422
       end
-    else 
-      render json: { message: 'You are not authenticated to create an article' }
+    else
+      render json: { message: 'You are not authenticated to create an article' },
+      status: 401
     end
   end
 

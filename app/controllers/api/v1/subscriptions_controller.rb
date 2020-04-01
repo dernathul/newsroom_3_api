@@ -3,7 +3,7 @@
 class Api::V1::SubscriptionsController < ApplicationController
   before_action :authenticate_user!
   def create
-    if params[:stripetoken]
+    if params[:stripeToken]
       begin
         customer = Stripe::Customer.list(email: current_user.email).data.first
         customer = Stripe::Customer.create({ email: current_user.email, source: params[:stripeToken] }) unless customer

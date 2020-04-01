@@ -26,7 +26,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
   describe 'successfully with valid stripe token' do
     before do
       post '/api/v1/subscriptions',
-           params: { stripetoken: card_token },
+           params: { stripeToken: card_token },
            headers: headers
       user.reload
     end
@@ -48,7 +48,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
     describe 'with invalid token' do
       before do
         post '/api/v1/subscriptions',
-             params: { stripetoken: invalid_token },
+             params: { stripeToken: invalid_token },
              headers: headers
       end
 
@@ -83,7 +83,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
 
     describe 'when user is not signed in' do
       before do
-        post '/api/v1/subscriptions', params: { stripetoken: card_token }
+        post '/api/v1/subscriptions', params: { stripeToken: card_token }
       end
 
       it 'returns not authorized reponse status' do
@@ -103,7 +103,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
         StripeMock.prepare_error(custom_error, :create_subscription)
 
         post '/api/v1/subscriptions',
-             params: { stripetoken: card_token },
+             params: { stripeToken: card_token},
              headers: headers
       end
 

@@ -4,6 +4,11 @@ RSpec.describe 'POST /article', type: :request do
   let(:journalist_headers) do
     { HTTP_ACCEPT: 'application/json' }.merge!(journalist_credentials)
   end
+  let(:reg_user) { create(:user, role: 'reg_user') }
+  let(:reg_user_credentials) { reg_user.create_new_auth_token }
+  let(:reg_user_headers) do
+    { HTTP_ACCEPT: 'application/json' }.merge!(reg_user_credentials)
+  end
 
   describe 'successfull' do
     before do
@@ -154,7 +159,7 @@ RSpec.describe 'POST /article', type: :request do
                category: 'tech'
              }
            },
-           headers: headers
+           headers: reg_user_headers
     end
 
     it 'returns 401 status' do
@@ -163,8 +168,9 @@ RSpec.describe 'POST /article', type: :request do
 
     it 'returns error message' do
       expect(
-        response_json['errors'][0]
-      ).to eq 'You need to sign in or sign up before continuing.'
+        response_json['message']
+      ).to eq 'You are not authenticated to create an article'
     end
   end
+  
 end

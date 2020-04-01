@@ -79,7 +79,7 @@ RSpec.describe "POST '/api/v1/auth'", type: :request do
         expect(response).to have_http_status 422
       end
 
-      it 'returns am error message' do
+      it 'returns an error message' do
         expect(response_json['errors']['email']).to eq ['has already been taken']
       end 
     end

@@ -161,7 +161,7 @@ RSpec.describe 'POST /article', type: :request do
       expect(response.status).to eq 401
     end
 
-    it 'returns stuff' do
+    it 'returns error message' do
       expect(
         response_json['errors'][0]
       ).to eq 'You need to sign in or sign up before continuing.'

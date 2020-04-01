@@ -20,12 +20,14 @@ class Api::V1::ArticlesController < ApplicationController
         render json: { message: article.errors.full_messages.to_sentence },
                status: 422
       end
+    else 
+      render json: { message: 'You are not authenticated to create an article' }
     end
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :snippet, :content, :category)
+    params.require(:article).permit(:title, :snippet, :content, :category, :premium)
   end
 end

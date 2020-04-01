@@ -5,8 +5,8 @@ class Api::V1::SubscriptionsController < ApplicationController
   def create
     if params[:stripetoken]
       begin
-        customer = Stripe::Customer.list(email: params[:email]).data.first
-        customer ||= Stripe::Customer.create({ email: params[:email], source: params[:stripetoken] })
+        customer = Stripe::Customer.list(email: current_user.email).data.first
+        customer = Stripe::Customer.create({ email: current_user.email, source: params[:stripeToken] }) unless customer
         subscription = Stripe::Subscription.create({ customer: customer.id, plan: 'year_subscription' })
 
         if Rails.env.test?
@@ -32,7 +32,7 @@ class Api::V1::SubscriptionsController < ApplicationController
         stripe_error_handler(e.message)
       end
     else
-      stripe_error_handler('No Stripe token sent with request')
+      stripe_error_handler('Somthing went wrong and your payment got canceled, please contact customer support')
     end
   end
 

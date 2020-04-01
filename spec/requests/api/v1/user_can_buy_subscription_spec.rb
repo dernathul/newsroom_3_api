@@ -26,7 +26,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
   describe 'successfully with valid stripe token' do
     before do
       post '/api/v1/subscriptions',
-           params: { stripetoken: card_token, email: user.email },
+           params: { stripetoken: card_token },
            headers: headers
       user.reload
     end
@@ -48,7 +48,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
     describe 'with invalid token' do
       before do
         post '/api/v1/subscriptions',
-             params: { stripetoken: invalid_token, email: user.email },
+             params: { stripetoken: invalid_token },
              headers: headers
       end
 
@@ -77,7 +77,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
       it 'receives error message about no token sent' do
         expect(
           response_json['error_message']
-        ).to eq 'No Stripe token sent with request'
+        ).to eq 'Somthing went wrong and your payment got canceled, please contact customer support'
       end
     end
 
@@ -103,7 +103,7 @@ RSpec.describe 'POST api/v1/subscriptions', type: :request do
         StripeMock.prepare_error(custom_error, :create_subscription)
 
         post '/api/v1/subscriptions',
-             params: { stripetoken: card_token, email: user.email },
+             params: { stripetoken: card_token },
              headers: headers
       end
 

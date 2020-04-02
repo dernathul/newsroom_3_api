@@ -4,6 +4,11 @@ RSpec.describe 'POST /article', type: :request do
   let(:journalist_headers) do
     { HTTP_ACCEPT: 'application/json' }.merge!(journalist_credentials)
   end
+  let(:reg_user) { create(:user, role: 'reg_user') }
+  let(:reg_user_credentials) { reg_user.create_new_auth_token }
+  let(:reg_user_headers) do
+    { HTTP_ACCEPT: 'application/json' }.merge!(reg_user_credentials)
+  end
   let(:image) do
     {
       type: 'application/jpg',
@@ -56,7 +61,7 @@ end
 
     it 'article has an image attached to it' do
       article = Article.where(title: response.request.params['article']['title'])
-      expect(article.image.attached?).to eq true
+      expect(article.first.image.attached?).to eq true
     end
   end
 

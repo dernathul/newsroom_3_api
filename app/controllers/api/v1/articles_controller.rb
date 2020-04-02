@@ -12,9 +12,10 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    if current_user.role === 'journalist'
+    if current_user.role == 'journalist'
       article = Article.create(article_params)
       if article.persisted? && attach_image(article)
+      
         render json: { message: 'Your article was saved' }
       else
         render json: { message: article.errors.full_messages.to_sentence },

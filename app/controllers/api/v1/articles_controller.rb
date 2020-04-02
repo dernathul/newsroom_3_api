@@ -12,9 +12,10 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    if current_user.role === 'journalist'
+    if current_user.role == 'journalist'
       article = Article.create(article_params)
-      if article.persisted?
+      if article.persisted? && attach_image(article)
+      
         render json: { message: 'Your article was saved' }
       else
         render json: { message: article.errors.full_messages.to_sentence },
@@ -30,5 +31,13 @@ class Api::V1::ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :snippet, :content, :category, :premium)
+  end
+
+  def attach_image(article)
+    params_image = params['article']['image']
+
+    if params_image.present?
+    DecodeService.attach_image(params_image, article.image)
+    end
   end
 end

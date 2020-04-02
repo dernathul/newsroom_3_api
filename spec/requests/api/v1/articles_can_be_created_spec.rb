@@ -4,6 +4,14 @@ RSpec.describe 'POST /article', type: :request do
   let(:journalist_headers) do
     { HTTP_ACCEPT: 'application/json' }.merge!(journalist_credentials)
   end
+  let(:image) do
+    {
+      type: 'application/jpg',
+      encoder: 'name=new_image.jpg:base64',
+      data: 'GHJKFNKSJHFUDHFdnfkdjfjkshuhFNLNKLFDFJLkjksldjflkgdmsk248273rendlksfn',
+      extension: 'jpg'
+    }
+end
 
   describe 'successfull' do
     before do
@@ -13,7 +21,8 @@ RSpec.describe 'POST /article', type: :request do
                title: 'No more room in space',
                snippet: 'Its all gone, sorry',
                content: 'Govenor says this aint good',
-               category: 'tech'
+               category: 'tech',
+               image: image
              }
            },
            headers: journalist_headers
@@ -44,6 +53,11 @@ RSpec.describe 'POST /article', type: :request do
     it 'displays correct category' do
       expect(response.request.params['article']['category']).to eq 'tech'
     end
+
+    it 'article has an image attached to it' do
+      article = Article.where(title: response.request.params['article']['title'])
+      expect(article.image.attached?).to eq true
+    end
   end
 
   describe 'sad path' do
@@ -54,7 +68,8 @@ RSpec.describe 'POST /article', type: :request do
                title: '',
                snippet: 'this is text',
                content: 'content text',
-               category: 'tech'
+               category: 'tech',
+               image: image
              }
            },
            headers: journalist_headers
@@ -76,7 +91,8 @@ RSpec.describe 'POST /article', type: :request do
                title: 'Cool title',
                snippet: '',
                content: 'content text',
-               category: 'tech'
+               category: 'tech',
+               image: image
              }
            },
            headers: journalist_headers
@@ -101,7 +117,8 @@ RSpec.describe 'POST /article', type: :request do
                title: 'Yes a title',
                snippet: 'this is text',
                content: '',
-               category: 'tech'
+               category: 'tech',
+               image: image
              }
            },
            headers: journalist_headers
@@ -126,7 +143,8 @@ RSpec.describe 'POST /article', type: :request do
                title: 'Yes a title',
                snippet: 'this is text',
                content: 'content text',
-               category: ''
+               category: '',
+               image: image
              }
            },
            headers: journalist_headers
@@ -151,7 +169,8 @@ RSpec.describe 'POST /article', type: :request do
                title: 'No more room in space',
                snippet: 'Its all gone, sorry',
                content: 'Govenor says this aint good',
-               category: 'tech'
+               category: 'tech',
+               image: image
              }
            },
            headers: headers

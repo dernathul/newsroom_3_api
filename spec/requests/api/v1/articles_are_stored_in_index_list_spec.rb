@@ -4,6 +4,7 @@ describe 'GET /articles', type: :request do
     let!(:articles2) do
       create(
         :article,
+        :with_image,
         title: 'NOSPACE',
         snippet: 'You thought you liked space',
         content: 'NOSPACE is where you want to be',

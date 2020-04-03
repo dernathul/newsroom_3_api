@@ -49,6 +49,27 @@ RSpec.describe "GET /articles", type: :request do
     ).to eq 2
   end
 
+  it "should return article title" do
+    expect(response_json["articles"][0]["title"]).to eq "NOSPACE"
+  end
+
+  it "should return article snippet" do
+    expect(
+      response_json["articles"][0]["snippet"]
+
+    ).to eq "You thought you liked space"
+  end
+
+  it "should return article content" do
+    expect(
+      response_json["articles"][0]["content"]
+    ).to eq "NOSPACE is where you want to be"
+  end
+
+  it "should return article category" do
+    expect(response_json["articles"][0]["category"]).to eq "tech"
+  end
+
   describe "journalist can not view unpublished articles" do
     before { get "/api/v1/admin", headers: journalist_headers }
 
@@ -57,26 +78,9 @@ RSpec.describe "GET /articles", type: :request do
     end
 
     it "journalist should not see articles" do
-       
       expect(
         response_json["message"]
       ).to eq "You are not authenticated to view unpublished articles"
     end
   end
-
-  # it "editor should see all published articles" do
-  #   expect(
-  #     response_json["article"].count
-  #   ).to eq 2
-  # end
-
-  # it "displays correct content" do
-  #   expect(
-  #     response.request.params["article"]["content"]
-  #   ).to eq "Govenor says this aint good"
-  # end
-
-  # it "displays correct category" do
-  #   expect(response.request.params["article"]["category"]).to eq "tech"
-  # end
 end

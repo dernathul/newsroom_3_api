@@ -2,7 +2,7 @@ class Api::V1::ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[create]
 
   def index
-    articles = Article.all
+    articles = Article.where(published: true)
     render json: articles, each_serializer: ArticlesIndexSerializer
   end
 

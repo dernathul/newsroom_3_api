@@ -16,7 +16,7 @@ RSpec.describe 'POST /article', type: :request do
       data: 'GHJKFNKSJHFUDHFdnfkdjfjkshuhFNLNKLFDFJLkjksldjflkgdmsk248273rendlksfn',
       extension: 'jpg'
     }
-end
+  end
 
   describe 'successfull' do
     before do

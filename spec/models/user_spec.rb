@@ -12,6 +12,11 @@ RSpec.describe User, type: :model do
   it 'should have valid Factory' do
     expect(create(:journalist)).to be_valid
   end
+
+  it 'should have valid Factory' do
+    expect(create(:editor)).to be_valid
+  end
+  
   describe 'Database table' do
     it { is_expected.to have_db_column :encrypted_password }
     it { is_expected.to have_db_column :email }

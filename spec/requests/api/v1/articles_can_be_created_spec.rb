@@ -20,7 +20,7 @@ RSpec.describe 'POST /article', type: :request do
 
   describe 'successfull' do
     before do
-      post '/api/v1/articles',
+      post '/api/v1/admin',
            params: {
              article: {
                title: 'No more room in space',
@@ -67,7 +67,7 @@ RSpec.describe 'POST /article', type: :request do
 
   describe 'sad path' do
     before do
-      post '/api/v1/articles',
+      post '/api/v1/admin',
            params: {
              article: {
                title: '',
@@ -90,7 +90,7 @@ RSpec.describe 'POST /article', type: :request do
   end
   describe 'sad path' do
     before do
-      post '/api/v1/articles',
+      post '/api/v1/admin',
            params: {
              article: {
                title: 'Cool title',
@@ -116,7 +116,7 @@ RSpec.describe 'POST /article', type: :request do
 
   describe 'sad path' do
     before do
-      post '/api/v1/articles',
+      post '/api/v1/admin',
            params: {
              article: {
                title: 'Yes a title',
@@ -142,7 +142,7 @@ RSpec.describe 'POST /article', type: :request do
 
   describe 'sad path' do
     before do
-      post '/api/v1/articles',
+      post '/api/v1/admin',
            params: {
              article: {
                title: 'Yes a title',
@@ -168,7 +168,7 @@ RSpec.describe 'POST /article', type: :request do
 
   describe 'can not create article as user' do
     before do
-      post '/api/v1/articles',
+      post '/api/v1/admin',
            params: {
              article: {
                title: 'No more room in space',

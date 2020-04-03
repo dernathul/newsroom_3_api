@@ -50,24 +50,24 @@ RSpec.describe "GET /articles", type: :request do
   end
 
   it "should return article title" do
-    expect(response_json["articles"][0]["title"]).to eq "NOSPACE"
+    expect(response_json["articles"].first["title"]).to eq "NOSPACE"
   end
 
   it "should return article snippet" do
     expect(
-      response_json["articles"][0]["snippet"]
+      response_json["articles"].first["snippet"]
 
     ).to eq "You thought you liked space"
   end
 
   it "should return article content" do
     expect(
-      response_json["articles"][0]["content"]
+      response_json["articles"].first["content"]
     ).to eq "NOSPACE is where you want to be"
   end
 
   it "should return article category" do
-    expect(response_json["articles"][0]["category"]).to eq "tech"
+    expect(response_json["articles"].first["category"]).to eq "tech"
   end
 
   describe "journalist can not view unpublished articles" do

@@ -70,6 +70,10 @@ RSpec.describe "GET /articles", type: :request do
     expect(response_json["articles"].first["category"]).to eq "tech"
   end
 
+  it "should return premium to be true" do
+    expect(response_json["articles"].first["premium"]).to eq true
+  end
+
   describe "journalist can not view unpublished articles" do
     before { get "/api/v1/admin", headers: journalist_headers }
 

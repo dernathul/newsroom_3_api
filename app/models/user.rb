@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
   validates_presence_of :role
-  enum role: [ :reg_user, :subscriber, :journalist ]
+  enum role: [ :reg_user, :subscriber, :journalist, :editor ]
 end

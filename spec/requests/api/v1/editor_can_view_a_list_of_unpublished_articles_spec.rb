@@ -37,13 +37,13 @@ RSpec.describe "GET /articles", type: :request do
       )
   end
 
-  before { get '/api/v1/articles' }
+  before { get '/api/v1/admin', headers: editor_headers }
 
   it "returns 200 status" do
     expect(response.status).to eq 200
   end
 
-  it "editor should see all published articles" do
+  it "editor should see all unpublished articles" do
     expect(
       response_json["articles"].count).to eq 2
   end

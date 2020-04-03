@@ -21,23 +21,23 @@ RSpec.describe "GET /articles", type: :request do
       content: "NOSPACE is where you want to be",
       category: "tech",
       premium: true,
-      published: false
+      published: false,
     )
   end
-    let!(:articles3) do
-      create(
-        :article,
-        :with_image,
-        title: "SPACE",
-        snippet: "You thought you did not liked space",
-        content: "SPACE is where you want to be",
-        category: "sports",
-        premium: true,
-        published: false
-      )
+  let!(:articles3) do
+    create(
+      :article,
+      :with_image,
+      title: "SPACE",
+      snippet: "You thought you did not liked space",
+      content: "SPACE is where you want to be",
+      category: "sports",
+      premium: true,
+      published: false,
+    )
   end
 
-  before { get '/api/v1/admin', headers: editor_headers }
+  before { get "/api/v1/admin", headers: editor_headers }
 
   it "returns 200 status" do
     expect(response.status).to eq 200
@@ -45,7 +45,23 @@ RSpec.describe "GET /articles", type: :request do
 
   it "editor should see all unpublished articles" do
     expect(
-      response_json["articles"].count).to eq 2
+      response_json["articles"].count
+    ).to eq 2
+  end
+
+  describe "journalist can not view unpublished articles" do
+    before { get "/api/v1/admin", headers: journalist_headers }
+
+    it "returns 401 status" do
+      expect(response.status).to eq 401
+    end
+
+    it "journalist should not see articles" do
+       
+      expect(
+        response_json["message"]
+      ).to eq "You are not authenticated to view unpublished articles"
+    end
   end
 
   # it "editor should see all published articles" do

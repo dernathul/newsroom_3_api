@@ -23,12 +23,13 @@ describe 'GET /articles', type: :request do
     end
 
     it 'checks if title is correct' do
-      expect(JSON.parse(response.body)['articles'].first['title']).to eq 'SPACE'
+      binding.pry
+      expect(JSON.parse(response.body)['articles'].second['title']).to eq 'SPACE'
     end
 
     it 'checks if snippet is correct' do
       expect(
-        JSON.parse(response.body)['articles'].first['snippet']
+        JSON.parse(response.body)['articles'].second['snippet']
       ).to eq 'Is space the next place?'
     end
   end

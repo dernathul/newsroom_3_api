@@ -2,7 +2,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def index
     articles = Article.where(published: true)
-    render json: articles, each_serializer: ArticlesIndexSerializer
+    render json: articles.reverse, each_serializer: ArticlesIndexSerializer
   end
 
   def show

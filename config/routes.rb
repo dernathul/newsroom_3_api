@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :articles, only:[:index, :show]
       resources :subscriptions, only:[:create]
-      resources :admin, only:[:index, :create]
+      resources :admin, only:[:index, :create, :update]
       resources :sessions, only:[:create ]
     end
   end

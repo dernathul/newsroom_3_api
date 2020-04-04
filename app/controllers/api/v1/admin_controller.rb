@@ -29,6 +29,10 @@ class Api::V1::AdminController < ApplicationController
     end
   end
 
+  def update
+    render json: { message: "Article is published"}
+  end
+
   private
 
   def article_params

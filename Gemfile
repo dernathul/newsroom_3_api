@@ -12,6 +12,7 @@ gem 'active_model_serializers'
 gem 'devise_token_auth'
 gem 'stripe-rails'
 gem 'aws-sdk-s3'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'

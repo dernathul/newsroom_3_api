@@ -1,4 +1,4 @@
-RSpec.describe Api::V1::Sessionscontroller, type: :request do
+RSpec.describe Api::V1::SessionsController, type: :request do
   describe ' POST /api/v1/sessions successfully' do
 
     it 'returns a session object with location and edition name' do

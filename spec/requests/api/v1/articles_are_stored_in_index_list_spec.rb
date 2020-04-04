@@ -23,7 +23,6 @@ describe 'GET /articles', type: :request do
     end
 
     it 'checks if title is correct' do
-      binding.pry
       expect(JSON.parse(response.body)['articles'].second['title']).to eq 'SPACE'
     end
 

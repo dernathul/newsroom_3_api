@@ -29,14 +29,9 @@ class Api::V1::AdminController < ApplicationController
   end
 
   def update
-    if current_user.role == "editor"
-      article = Article.find(params[:id])
-      if article.update(article_params)
-        render json: { message: "Article is published" }
-      else
-        render json: { message: "You are not authenticated to publish an article" },
-               status: 401
-      end
+    article = Article.find(params[:id])
+    if current_user.role == "editor" && article.update(article_params)
+      render json: { message: "Article is published" }
     else
       render json: { message: "You are not authenticated to publish an article" },
              status: 401

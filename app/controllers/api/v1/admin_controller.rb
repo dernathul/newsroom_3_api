@@ -30,8 +30,30 @@ class Api::V1::AdminController < ApplicationController
   end
 
   def update
-    render json: { message: "Article is published"}
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to @article, :notice => "Article was successfully edited"
+    else
+      render 'edit'
+    end
   end
+  
+  # def update
+  #   if current_user.role == 'editor'
+  #     article = Article.update(article_params)
+  #     if article.persisted? && attach_image(article)
+      
+  #       render json: { message: "Article is published"}
+  #     else
+  #       render json: { message: article.errors.full_messages.to_sentence },
+  #              status: 422
+  #     end
+  #   else
+  #     render json: { message: 'You are not authenticated to publish an article' },
+  #     status: 401
+  #   end
+    
+  # end
 
   private
 

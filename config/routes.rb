@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :articles, only:[:index, :show]
       resources :subscriptions, only:[:create]
       resources :admin, only:[:index, :create]
-      resources :sessions, only:[:create]
+      resources :sessions, only:[:create ]
     end
   end
 end

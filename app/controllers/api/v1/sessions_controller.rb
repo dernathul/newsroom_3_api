@@ -8,7 +8,8 @@ class Api::V1::SessionsController < ApplicationController
       { location:
       { latitude: lat, 
         longitude: long },
-        edition: edition}}
+        edition: edition}},
+        status: 200
       
   end
 end
